@@ -27,12 +27,13 @@
 
 			<form action="/filtering" method="post">
 				<div class="filter">
-				<strong>Filter By Town:</strong>
-				<input type="radio" name="town" value="All">Show all
-				<input type="radio" name="town" value="CY">Bellville
-				<input type="radio" name="town" value="CJ">Paarl
-				<input type="radio" name="town" value="CA"> Cape Town
-			</div>
+				    <strong>Filter By Town:</strong>
+				    <input type="radio" name="town" value="All">Show all
+				    <input type="radio" name="town" value="CY">Bellville
+				    <input type="radio" name="town" value="CJ">Paarl
+				    <input type="radio" name="town" value="CA"> Cape Town
+                    <button class="filRegNumber fbtn fblue" type="submit">filter reg number</button>
+			    </div>
 			</form>
 			<hr>
 			<div class="regNumbers">
@@ -43,7 +44,7 @@
 				{{/each}}
 			</div>
 			<div class="clearButton">
-				<button class="addRegNumber btn red" type="submit">Del reg number</button>
+				<button class="delRegNumber btn red" type="submit">Del reg number</button>
 			</div>
 		</div>
 	</div>

@@ -42,9 +42,7 @@ app.get('/', async (req,res)=>{
 app.post('/insertReg', async (req,res)=>{
     const {regNumber} = req.body;
     const theReg = regNumber.substring(0,2);
-    console.log(theReg);
     const selectId = await sendOrGetData.gettingTownID(theReg)
-    console.log(selectId)
     await sendOrGetData.storingUserRegistration(regNumber,selectId);
     console.log(regNumber)
     res.redirect("/");
@@ -53,9 +51,12 @@ app.post('/insertReg', async (req,res)=>{
 app.post('/filtering', async (req,res)=>{
     const {town} = req.body;
     const registrations = await sendOrGetData.getRegByTown(town)
-    console.log(registrations)
     res.redirect("/")
 });
+
+// app.get('/filtering', async (req,res)=>{
+//     res.redirect("/")
+// });
 
 const PORT = process.env.PORT || 2025;
 app.listen(PORT, (req,res)=>{

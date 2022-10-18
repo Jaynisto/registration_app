@@ -1,6 +1,6 @@
 const pgp = require('pg-promise')();
 
-const DATABASE_URL = process.env.DATABASE_URL || "postgresql://postgres:Jnisto9801@localhost:5432/registration_numbers"
+const DATABASE_URL = process.env.DATABASE_URL || "postgresql://postgres:Jnisto9801@localhost:5432/postgres"
 const config ={  
     connectionString : DATABASE_URL
 }

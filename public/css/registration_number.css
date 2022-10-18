@@ -33,6 +33,17 @@ body {
 	border-radius: 0.25em;
 }
 
+.fbtn {
+	margin: 0.4em;
+	padding: 0.5em;
+	font-size: 0.8em;
+	border-radius: 0.25em;
+}
+
+.fblue{
+	background-color: rgb(145, 193, 241);
+}
+
 .blue {
 	background-color: dodgerblue;
 }
@@ -82,4 +93,9 @@ h1{
 
 .clearButton {
 	margin-top: 25%;
+	margin-left: 43%;
+}
+
+.filRegNumber{
+	margin-left: 44%;
 }

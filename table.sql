@@ -1,6 +1,6 @@
 create database registration_numbers;
-create role Johnsons login password 'FJnisto9801';
-grant all privileges on database registration_numbers to Johnsons;
+create role postgres login password 'Jnisto9801';
+grant all privileges on database registration_numbers to postgres;
 
 CREATE TABLE my_towns(
     id SERIAL PRIMARY KEY,
