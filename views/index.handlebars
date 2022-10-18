@@ -18,29 +18,32 @@
 			</div>
 
 
-			<div>
+			<div class="form">
 				<form action="insertReg" method="post">
-                    <input type="text" class="regNumberEntered" placeholder="enter a registration number" name="regNumber">
+                    <input type="text" class="regNumberEntered" placeholder="Enter Registration Number" name="regNumber">
 				    <button class="addRegNumber btn blue" type="submit">Add reg number</button>
                 </form>
 			</div>
 
-			{{!-- <div class="filter">
-				<strong>Filter by town</strong>
-
-				<input type="radio" name="town" value="">Show all
+			<form action="/filtering" method="post">
+				<div class="filter">
+				<strong>Filter By Town:</strong>
+				<input type="radio" name="town" value="All">Show all
 				<input type="radio" name="town" value="CY">Bellville
 				<input type="radio" name="town" value="CJ">Paarl
 				<input type="radio" name="town" value="CA"> Cape Town
-
-			</div> --}}
+			</div>
+			</form>
 			<hr>
 			<div class="regNumbers">
-				<!-- <i>Reg numbers to be added here...</i> -->
-
+				{{#each registration}}
 				<div class="regNumber">
-					CY 124-245
-				</div>
+					{{registration}}
+				</div> 
+				{{/each}}
+			</div>
+			<div class="clearButton">
+				<button class="addRegNumber btn red" type="submit">Del reg number</button>
 			</div>
 		</div>
 	</div>

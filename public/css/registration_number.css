@@ -37,6 +37,11 @@ body {
 	background-color: dodgerblue;
 }
 
+.red {
+	background-color:crimson;
+
+}
+
 .message {
 	height: 1em;
 	font-weight: bold;
@@ -45,7 +50,7 @@ body {
 
 .regNumber {
 
-	background-color: yellow;
+	background-color: rgb(18, 58, 110);
 	border: 0.1em solid;
 	border-radius: 0.25em;
 	padding: 1em;
@@ -57,16 +62,24 @@ body {
 
 }
 
-.gp {
-	border: 2px solid lightskyblue;
-}
-
-.fs {
-	/* background-color: ; */
-	border: 2px solid orange;
-}
 
 input[type='radio'] {
 	margin: 1em;
 }
 
+.filter {
+	margin-left: 28%;
+}
+
+h1{
+	text-align: center;
+}
+
+.form {
+	display: flex;
+    justify-content: center;
+}
+
+.clearButton {
+	margin-top: 25%;
+}

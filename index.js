@@ -32,17 +32,30 @@ app.use(bodyParser.urlencoded({extended : false}));
 app.use(bodyParser.json());
 
 
-app.get('/', (req,res)=>{
-    res.render("index");
+app.get('/', async (req,res)=>{
+    res.render("index", {
+        registration : await sendOrGetData.displayingRegNums(),
+    });
+    
 });
 
 app.post('/insertReg', async (req,res)=>{
     const {regNumber} = req.body;
-    await sendOrGetData.storingUserRegistration(regNumber);
+    const theReg = regNumber.substring(0,2);
+    console.log(theReg);
+    const selectId = await sendOrGetData.gettingTownID(theReg)
+    console.log(selectId)
+    await sendOrGetData.storingUserRegistration(regNumber,selectId);
     console.log(regNumber)
     res.redirect("/");
 });
 
+app.post('/filtering', async (req,res)=>{
+    const {town} = req.body;
+    const registrations = await sendOrGetData.getRegByTown(town)
+    console.log(registrations)
+    res.redirect("/")
+});
 
 const PORT = process.env.PORT || 2025;
 app.listen(PORT, (req,res)=>{
