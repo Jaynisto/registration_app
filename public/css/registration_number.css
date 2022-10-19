@@ -90,9 +90,14 @@ h1{
 	display: flex;
     justify-content: center;
 }
+.message{
+	display: flex;
+    justify-content: center;
+	margin-bottom: 3%;
+}
 
 .clearButton {
-	margin-top: 25%;
+	margin-top: 15%;
 	margin-left: 43%;
 	border-radius: 0.55em;
 }

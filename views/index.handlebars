@@ -13,10 +13,14 @@
 		<div>
 			<h1>Registration numbers</h1>
 
-			<div class="message">
+			<div class="message" style="height:30px;">
+				{{#if messages.erro}}
+                    <div  class="massages">
+                        <h3 style="color:red; font-size:30px " class="massages">{{messages.erro}}</h3>
+                    </div>
+				{{/if}}
 
 			</div>
-
 
 			<div class="form">
 				<form action="insertReg" method="post">
@@ -44,7 +48,7 @@
 				{{/each}}
 			</div>
 			<div class="clearButton">
-				<button class="delRegNumber btn red" type="submit">Del reg number</button>
+				<a href="/clear"><button class="delRegNumber btn red" type="submit">Reset</button></a>
 			</div>
 		</div>
 	</div>

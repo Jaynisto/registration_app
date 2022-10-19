@@ -5,20 +5,20 @@ module.exports = function factoryFunction(db){
     }
 
     async function displayingRegNums(){
-        const registrationNums = "SELECT registration FROM registration_number;"
+        const registrationNums = "SELECT DISTINCT registration FROM registration_number;"
         const gettingRegFromTable = await db.any(registrationNums);
         return gettingRegFromTable
     }
     async function getRegByTown(town){
-        const theTown = []
+        let theTown = 0
         if(town == "CY"){
-        theTown.push(1)
+        theTown = 1
         }
         if(town == "CJ"){
-           theTown.push(2)
+           theTown = 2
         }
          if(town == "CA"){
-           theTown.push(3)
+           theTown = 3
         }
         const select = await db.manyOrNone('SELECT registration FROM registration_number WHERE town_id = $1;',[theTown])
         return select;
@@ -29,10 +29,23 @@ module.exports = function factoryFunction(db){
         return townId.id;
     }
 
+    async function clearingReg(){
+        const clearReg = await db.none('DELETE FROM registration_number;')
+        return clearReg;
+    }
+
+    async function detectDupReg(registration){
+        const selectingReg = await db.any('SELECT registration FROM registration_number WHERE registration = $1;'[registration])
+        return selectingReg.length >= 1 ? true : false;
+
+    }
+
     return{
         storingUserRegistration,
         displayingRegNums,
         gettingTownID,
-        getRegByTown
+        getRegByTown,
+        clearingReg,
+        detectDupReg
     }
 }
