@@ -12,15 +12,15 @@ module.exports = function factoryFunction(db){
     async function getRegByTown(town){
         let theTown = 0
         if(town == "CY"){
-        theTown = 1
+           theTown = 1
         }
         if(town == "CJ"){
            theTown = 2
         }
-         if(town == "CA"){
+        if(town == "CA"){
            theTown = 3
         }
-        const select = await db.manyOrNone('SELECT registration FROM registration_number WHERE town_id = $1;',[theTown])
+        const select = await db.manyOrNone('SELECT DISTINCT registration FROM registration_number WHERE town_id = $1;',[theTown])
         return select;
     }
 

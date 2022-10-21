@@ -5,6 +5,7 @@ const flash = require("express-flash");
 const session = require("express-session");
 const db = require("./database/connection")
 const factoryFunction = require("./database/factoryFunction");
+const e = require("express");
 
 const app = express()
 
@@ -33,10 +34,12 @@ app.use(bodyParser.json());
 
 
 app.get('/', async (req,res)=>{
+    console.log(await sendOrGetData.displayingRegNums());
     res.render("index", {
         registration : await sendOrGetData.displayingRegNums(),
-    });
-    
+        //filterReg: // 
+
+    }); 
 });
 
 app.post('/insertReg', async (req,res)=>{
@@ -59,9 +62,15 @@ app.post('/insertReg', async (req,res)=>{
 
 app.post('/filtering', async (req,res)=>{
     const {town} = req.body;
-    const registrations = await sendOrGetData.getRegByTown(town)
-    console.log(registrations)
-    res.redirect("/")
+    let registrations;
+    if (town == "All") {
+      registrations =  await sendOrGetData.displayingRegNums()
+    } else {
+        registrations = await sendOrGetData.getRegByTown(town)
+    }
+    res.render("index", {
+        registration : registrations
+    })
 });
 
 app.get('/clear', async (req,res)=>{

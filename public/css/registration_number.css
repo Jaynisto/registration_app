@@ -61,7 +61,7 @@ body {
 
 .regNumber {
 
-	background-color: rgb(18, 58, 110);
+	background-color: rgb(201, 217, 238);
 	border: 0.1em solid;
 	border-radius: 0.25em;
 	padding: 1em;
@@ -97,7 +97,7 @@ h1{
 }
 
 .clearButton {
-	margin-top: 15%;
+	margin-top: 20%;
 	margin-left: 43%;
 	border-radius: 0.55em;
 }
