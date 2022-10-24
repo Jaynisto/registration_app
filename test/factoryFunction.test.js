@@ -36,7 +36,7 @@ describe('Database test for Registration Web App', function(){
         await database.storingUserRegistration('CJ 125-325',2);
 
         const checkingName = await database.getRegByTown("CA");
-        assert.deepEqual([ { "registration": "CA 125-355" }, { "registration": "CA 125-325" } ]
+        assert.deepEqual([ { registration: 'CA 125-355' }, { registration: 'CA 125-325' } ]
         , checkingName)
     })
 
@@ -47,7 +47,7 @@ describe('Database test for Registration Web App', function(){
         await database.storingUserRegistration('CA 125-325',3);
 
         const checkingName = await database.getRegByTown("CJ");
-        assert.deepEqual([ { "registration": "CJ 125-325" }, { "registration": "CJ 125-385" } ]
+        assert.deepEqual([ { registration: 'CJ 125-325' }, { registration: 'CJ 125-385' } ]
         , checkingName)
     })
 
@@ -59,7 +59,7 @@ describe('Database test for Registration Web App', function(){
         await database.storingUserRegistration('CA 125-325',3);
 
         const checkingName = await database.getRegByTown("CJ");
-        assert.deepEqual([ { "registration": "CJ 125-325" }, { "registration": "CJ 125-355" } ]
+        assert.deepEqual([ { registration: 'CJ 125-325' }, { registration: 'CJ 125-355' } ]
         , checkingName)
     })
 
