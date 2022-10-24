@@ -36,9 +36,7 @@ app.use(bodyParser.json());
 app.get('/', async (req,res)=>{
     console.log(await sendOrGetData.displayingRegNums());
     res.render("index", {
-        registration : await sendOrGetData.displayingRegNums(),
-        //filterReg: // 
-
+        registration : await sendOrGetData.displayingRegNums()
     }); 
 });
 
@@ -79,7 +77,7 @@ app.post('/filtering', async (req,res)=>{
 
 app.get('/clear', async (req,res)=>{
     await sendOrGetData.clearingReg();
-    req.flash('erro', 'Registration numbers Deleted');
+    req.flash('res', 'Registration Numbers Deleted Successfully');
     res.redirect("/")
 })
 
