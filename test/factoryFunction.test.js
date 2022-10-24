@@ -29,41 +29,41 @@ describe('Database test for Registration Web App', function(){
         assert.equal("CA 125-325", getObject.registration)
     })
 
-    it ('Should be able to detect registration numbers from Cape Town.', async function(){
+    it ('Should be able to filter registration numbers from Cape Town.', async function(){
         let database = factoryFunction(db);
         await database.storingUserRegistration('CA 125-325',3);
         await database.storingUserRegistration('CA 125-355',3);
         await database.storingUserRegistration('CJ 125-325',2);
 
         const checkingName = await database.getRegByTown("CA");
-        assert.deepEqual([ { registration: 'CA 125-355' }, { registration: 'CA 125-325' } ]
+        assert.deepEqual([ { "registration": "CA 125-355" }, { "registration": "CA 125-325" } ]
         , checkingName)
     })
 
-    it ('Should be able to detect registration numbers from Paarl.', async function(){
+    it ('Should be able to filter registration numbers from Paarl.', async function(){
         let database = factoryFunction(db);
         await database.storingUserRegistration('CJ 125-325',2);
         await database.storingUserRegistration('CJ 125-385',2);
         await database.storingUserRegistration('CA 125-325',3);
 
         const checkingName = await database.getRegByTown("CJ");
-        assert.deepEqual([ { registration: 'CJ 125-325' }, { registration: 'CJ 125-385' } ]
+        assert.deepEqual([ { "registration": "CJ 125-325" }, { "registration": "CJ 125-385" } ]
         , checkingName)
     })
 
 
-    it ('Should be able to detect registration numbers from Bellvill.', async function(){
+    it ('Should be able to filter registration numbers from Bellvill.', async function(){
         let database = factoryFunction(db);
         await database.storingUserRegistration('CJ 125-325',2);
         await database.storingUserRegistration('CJ 125-355',2);
         await database.storingUserRegistration('CA 125-325',3);
 
         const checkingName = await database.getRegByTown("CJ");
-        assert.deepEqual([ { registration: 'CJ 125-325' }, { registration: 'CJ 125-355' } ]
+        assert.deepEqual([ { "registration": "CJ 125-325" }, { "registration": "CJ 125-355" } ]
         , checkingName)
     })
 
-    it ('Should be able to detect registrations numbers fom each town and their correct Amount.', async function(){
+    it ('Should be able to filter registrations numbers fom each town and their correct Amount.', async function(){
         let database = factoryFunction(db);
         await database.storingUserRegistration('CJ 115-325',2);
         await database.storingUserRegistration('CJ 145-325',2);
@@ -80,7 +80,6 @@ describe('Database test for Registration Web App', function(){
     it ('Should be able to check user id by a City.', async function(){
         let database = factoryFunction(db);
         const checkingId = await database.gettingTownID('CA');
-        console.log(checkingId)
         assert.deepEqual(3, checkingId)
     })
 
@@ -97,10 +96,9 @@ describe('Database test for Registration Web App', function(){
         await database.clearingReg()
 
 
-        const clearingReg = await database.clearingReg();
+        const clearingReg = await database.clearingReg();        
         
-        
-        assert.deepEqual(null, clearingReg)
+        assert.equal(null, clearingReg)
     })
 
 

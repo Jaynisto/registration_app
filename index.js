@@ -47,6 +47,10 @@ app.post('/insertReg', async (req,res)=>{
     let regNumbers = regNumber.toUpperCase();
     var regEx = /[CY|CJ|CA]{2}(\s)[0-9]{3}(\s|\-)[0-9]{3}/gi
     const isWC = regEx.test(regNumbers);
+    const checking = await sendOrGetData.detectDupReg(regNumbers )
+    if(checking != 0){
+        req.flash('erro', regNumbers  + ' Already Exists.')   
+    }
     if(isWC === true){
         const theReg = regNumbers.substring(0,2);
         
@@ -79,7 +83,7 @@ app.get('/clear', async (req,res)=>{
     res.redirect("/")
 })
 
-const PORT = process.env.PORT || 2025;
+const PORT = process.env.PORT || 2035;
 
 app.listen(PORT, (req,res)=>{
     console.log("App Started On Port " + PORT);

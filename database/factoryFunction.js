@@ -34,10 +34,10 @@ module.exports = function factoryFunction(db){
         return clearReg;
     }
 
-    async function detectDupReg(registration){
-        const selectingReg = await db.any('SELECT registration FROM registration_number WHERE registration = $1;'[registration])
-        return selectingReg.length >= 1 ? true : false;
-
+    async function detectDupReg(regNumber){
+        const findUser = 'SELECT count(*) from registration_number WHERE registration  = $1;';
+        const result = await db.one(findUser, [regNumber]);
+        return result.count;
     }
 
     return{
@@ -49,3 +49,11 @@ module.exports = function factoryFunction(db){
         detectDupReg
     }
 }
+
+
+
+// async function detectDupReg(registration){
+//     const selectingReg = await db.any('SELECT registration FROM registration_number WHERE registration = $1;'[registration])
+//     return selectingReg.length >= 1 ? true : false;
+
+// }
