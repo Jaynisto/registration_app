@@ -27,7 +27,7 @@ jobs:
         image: postgres:latest
 
         env:
-          POSTGRES_DB: registration_numbers
+          POSTGRES_DB: reg_tests
           POSTGRES_PASSWORD: Jnisto9801
           POSTGRES_PORT: 5432
           POSTGRES_USER: postgres
@@ -51,8 +51,8 @@ jobs:
     - run: npm install -g npm
     - run: npm install
     - run: |
-        PGPASSWORD=Jnisto9801 psql -h localhost -U postgres -d registration_numbers -a -f ./table.sql
+        PGPASSWORD=Jnisto9801 psql -h localhost -U postgres -d reg_tests -a -f ./table.tests.sql
     - run: npm run build --if-present
     - run: npm test
     env:
-      DATABASE_URL: postgresql://postgres:Jnisto9801@localhost:5432/registration_numbers
+      DATABASE_URL: postgresql://postgres:Jnisto9801@localhost:5432/reg_tests
