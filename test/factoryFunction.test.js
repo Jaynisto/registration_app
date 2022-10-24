@@ -104,6 +104,6 @@ describe('Database test for Registration Web App', function(){
 
 
     after(function(){
-        db.$pool.end
+        db.$pool.end()
     })
 })
